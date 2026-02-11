@@ -12,6 +12,7 @@ public class BibliotecaDbContext : DbContext
 
     public DbSet<Autor> Autores { get; set; }
     public DbSet<Libro> Libros { get; set; }
+    public DbSet<Usuario> Usuarios { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -27,7 +28,8 @@ public class BibliotecaDbContext : DbContext
             entity.Property(e => e.FechaNacimiento).IsRequired();
             entity.Property(e => e.FechaCreacion).HasDefaultValueSql("GETDATE()");
             entity.Property(e => e.FechaActualizacion).HasDefaultValueSql("GETDATE()");
-            
+            entity.Property(e => e.Activo).HasDefaultValue(true);
+
             entity.HasIndex(e => e.CorreoElectronico).IsUnique();
             entity.HasIndex(e => e.NombreCompleto);
             
@@ -52,6 +54,22 @@ public class BibliotecaDbContext : DbContext
             entity.HasIndex(e => e.AutorId);
             entity.HasIndex(e => e.Titulo);
             entity.HasIndex(e => e.Genero);
+        });
+
+        modelBuilder.Entity<Usuario>(entity =>
+        {
+            entity.ToTable("Usuarios");
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.NombreUsuario).IsRequired().HasMaxLength(100);
+            entity.Property(e => e.CorreoElectronico).IsRequired().HasMaxLength(150);
+            entity.Property(e => e.PasswordHash).IsRequired().HasMaxLength(500);
+            entity.Property(e => e.Rol).IsRequired().HasMaxLength(50);
+            entity.Property(e => e.FechaCreacion).HasDefaultValueSql("GETDATE()");
+            entity.Property(e => e.FechaActualizacion).HasDefaultValueSql("GETDATE()");
+            entity.Property(e => e.Activo).HasDefaultValue(true);
+            
+            entity.HasIndex(e => e.CorreoElectronico).IsUnique();
+            entity.HasIndex(e => e.NombreUsuario).IsUnique();
         });
     }
 }
