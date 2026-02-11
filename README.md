@@ -494,17 +494,9 @@ export const environment = {
 
 ### Para Desarrolladores
 
-1. **Backend**: Arquitectura limpia con CQRS, fácil de extender
+1. **Backend**: Arquitectura limpia con CQRS
 2. **Frontend**: Angular moderno con buenas prácticas, componentes standalone
 3. **Base de Datos**: Script completo con datos de prueba
-
-### Próximos Pasos Sugeridos
-
-- [ ] Agregar tests unitarios (xUnit para backend, Jasmine para frontend)
-- [ ] Implementar paginación en frontend
-- [ ] Agregar filtros de búsqueda
-- [ ] Implementar caché con Redis
-- [ ] Agregar Docker para deployment
 
 ### Soporte
 
