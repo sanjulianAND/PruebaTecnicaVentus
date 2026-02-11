@@ -77,6 +77,9 @@ var app = builder.Build();
 app.UseSerilogRequestLogging();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
+// CORS debe ir ANTES de cualquier middleware que pueda redirigir o bloquear
+app.UseCors("AllowAll");
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -84,7 +87,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors("AllowAll");
 app.UseRateLimiter();
 app.UseAuthentication();
 app.UseAuthorization();
