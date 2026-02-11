@@ -19,7 +19,7 @@ public class EliminarAutorHandler : IRequestHandler<EliminarAutorCommand, bool>
         if (!await _autorRepository.ExistsAsync(request.Id, cancellationToken))
             return false;
 
-        await _autorRepository.DeleteAsync(request.Id, cancellationToken);
+        await _autorRepository.SoftDeleteAsync(request.Id, cancellationToken);
         return true;
     }
 }
