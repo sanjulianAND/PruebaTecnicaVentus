@@ -1,8 +1,54 @@
 # Biblioteca API - Prueba Técnica .NET
 
-API RESTful para gestión de biblioteca desarrollada con .NET 8, implementando arquitectura limpia, CQRS, autenticación JWT y buenas prácticas de desarrollo.
+API RESTful para gestión de biblioteca desarrollada con .NET 8 y Angular 17+, implementando arquitectura limpia, CQRS, autenticación JWT y buenas prácticas de desarrollo.
 
-## Arquitectura
+## Estructura del Proyecto
+
+```
+PruebaPracticaVentus/
+├── Backend (.NET)
+│   ├── Database/           # Scripts SQL
+│   ├── Domain/            # Entidades y excepciones
+│   ├── Application/       # Casos de uso (CQRS)
+│   ├── Infrastructure/    # Repositorios y servicios
+│   └── PruebaPracticaVentus/  # API Controllers
+│
+└── Frontend (Angular)
+    └── src/app/
+        ├── core/          # Servicios, guards, interceptors
+        ├── features/      # Módulos de funcionalidades
+        └── shared/        # Componentes compartidos
+```
+
+## Inicio Rápido
+
+### 1. Base de Datos
+
+Ejecutar `Database/Script_BD_Completo.sql` en SQL Server
+
+### 2. Backend
+
+```bash
+dotnet run --project PruebaPracticaVentus
+```
+
+Backend disponible en: `https://localhost:5001`
+
+### 3. Frontend
+
+```bash
+cd frontend
+npm install
+ng serve
+```
+
+Frontend disponible en: `http://localhost:4200`
+
+---
+
+## Backend (.NET 8)
+
+### Arquitectura
 
 El proyecto sigue una **Arquitectura Limpia (Clean Architecture)** con los siguientes proyectos:
 
@@ -350,5 +396,128 @@ Tipos de errores manejados:
 - CORS configurado
 - Rate limiting para prevenir DoS
 
-**Versión Main**: Incluye todas las funcionalidades adicionales
-**Versión Base**: Solo lo requerido en la prueba (rama `feature/prueba-base`)
+---
+
+## Frontend (Angular 17+)
+
+### Características
+
+- **Angular 17+** con Standalone Components
+- **Angular Material** para UI moderna
+- **JWT Authentication** con guards e interceptors
+- **Reactive Forms** con validaciones
+- **Arquitectura por Features** escalable
+
+### Estructura del Frontend
+
+```
+frontend/src/app/
+├── core/                    # Infraestructura
+│   ├── models/             # Interfaces TypeScript
+│   ├── services/           # HTTP Services
+│   ├── guards/             # Route guards
+│   └── interceptors/       # HTTP interceptors
+│
+├── features/               # Módulos funcionales
+│   ├── auth/              # Login/Register
+│   ├── autores/           # CRUD Autores
+│   └── libros/            # CRUD Libros
+│
+└── shared/                # Componentes compartidos
+    └── components/
+        └── layout/        # Layout con navegación
+```
+
+### Instalación Frontend
+
+```bash
+cd frontend
+npm install
+ng serve
+```
+
+### Configuración
+
+Editar `frontend/src/environments/environment.ts`:
+
+```typescript
+export const environment = {
+  production: false,
+  apiUrl: "https://localhost:5001/api", // URL del backend
+};
+```
+
+### Funcionalidades UI
+
+#### Autenticación
+
+- Pantalla de login con gradiente
+- Pantalla de registro
+- Protección de rutas
+- Cierre de sesión
+
+#### Gestión de Libros
+
+- Tabla responsive con Material Table
+- Formulario con validaciones
+- Selector de autor
+- Datepicker para fechas
+- Confirmación para eliminar
+
+#### Gestión de Autores
+
+- Listado con todas las columnas
+- Formulario con datepicker
+- Validaciones de email
+
+### Tecnologías Frontend
+
+- Angular 17+ (Standalone Components)
+- Angular Material (UI Components)
+- RxJS (Observables)
+- TypeScript (Tipado estricto)
+
+### Componentes Angular Material
+
+- MatToolbar, MatSidenav, MatList (Navegación)
+- MatTable (Tablas de datos)
+- MatFormField, MatInput, MatSelect (Formularios)
+- MatDatepicker (Fechas)
+- MatButton, MatIcon (Acciones)
+- MatCard (Contenedores)
+- MatSnackBar (Notificaciones)
+- MatProgressSpinner (Loading)
+
+---
+
+## Notas Finales
+
+### Para Desarrolladores
+
+1. **Backend**: Arquitectura limpia con CQRS, fácil de extender
+2. **Frontend**: Angular moderno con buenas prácticas, componentes standalone
+3. **Base de Datos**: Script completo con datos de prueba
+
+### Próximos Pasos Sugeridos
+
+- [ ] Agregar tests unitarios (xUnit para backend, Jasmine para frontend)
+- [ ] Implementar paginación en frontend
+- [ ] Agregar filtros de búsqueda
+- [ ] Implementar caché con Redis
+- [ ] Agregar Docker para deployment
+
+### Soporte
+
+Para dudas técnicas revisar:
+
+- Documentación del backend en Swagger: `/swagger`
+- Logs del backend en: `logs/biblioteca-.txt`
+- README específico del frontend en: `frontend/README.md`
+
+---
+
+Desarrollado como prueba técnica demostrando conocimientos en:
+
+- **Backend**: .NET 8, Clean Architecture, CQRS, JWT, EF Core
+- **Frontend**: Angular 17+, TypeScript, Angular Material, RxJS
+- **Base de Datos**: SQL Server
