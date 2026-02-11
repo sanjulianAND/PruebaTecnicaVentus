@@ -130,11 +130,3 @@ GO
 INSERT INTO dbo.Usuarios (NombreUsuario, CorreoElectronico, PasswordHash, Rol, Activo)
 VALUES ('usuario', 'usuario@biblioteca.com', '$2a$11$qG3q7J8XqG3q7J8XqG3q7O8XqG3q7J8XqG3q7J8XqG3q7J8XqG3q7O', 'Usuario', 1);
 GO
-
-PRINT '============================================';
-PRINT 'BASE DE DATOS CREADA EXITOSAMENTE';
-PRINT '============================================';
-PRINT 'Usuarios de prueba:';
-PRINT '  - admin@biblioteca.com / Admin123!';
-PRINT '  - usuario@biblioteca.com / User123!';
-PRINT '============================================';
