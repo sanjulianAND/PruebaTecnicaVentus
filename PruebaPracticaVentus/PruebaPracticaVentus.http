@@ -1,0 +1,6 @@
+@PruebaPracticaVentus_HostAddress = http://localhost:5105
+
+GET {{PruebaPracticaVentus_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
