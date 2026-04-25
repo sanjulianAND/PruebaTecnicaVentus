@@ -36,6 +36,7 @@ public class AutoresController : ControllerBase
     {
         var query = new ListarAutoresPaginadoQuery(parametros);
         var resultado = await _mediator.Send(query);
+        // Primera modificación del controllador autores
         return Ok(RespuestaApi<PaginacionDto<AutorDto>>.Exitosa(resultado));
     }
 
